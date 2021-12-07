@@ -1,0 +1,9 @@
+<?php
+
+class Contest {
+    private  $id_contest;
+    private  $start_date;
+    private  $id_winner;
+    private  $id_game;
+
+}
