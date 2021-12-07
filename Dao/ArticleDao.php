@@ -2,12 +2,12 @@
 
 class ArticleDao
 {
-    private PDO $dbh;
+    private $dbh;
 
     public function __construct()
     {
         $this->dbh = new PDO(
-            "mysql:host=localhost;dbname=wf3_blog;charset=UTF8",
+            "mysql:host=localhost;dbname=wf3_php_final_milena;charset=UTF8",
             "root",
             "", [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -52,6 +52,16 @@ class ArticleDao
         $sth = $this->dbh->prepare("INSERT INTO article (title, description) VALUES (:title, :description)");
         $sth->bindValue(':title', $article->getTitle());
         $sth->bindValue(':description', $article->getDescription());
+        $sth->execute();
+        return $this->dbh->lastInsertId();
+    }
+
+
+    public function addGame(Article $game): int
+    {
+        $sth = $this->dbh->prepare("INSERT INTO `game`(`id_game`, `title`, `min_players`, `max_players`) VALUES (NULL,:title,:min_players,:max_players)");
+        $sth->bindValue(':title', $game->getTitle());
+        $sth->bindValue(':description', $game->getMinPlayers());
         $sth->execute();
         return $this->dbh->lastInsertId();
     }
