@@ -1,9 +1,7 @@
 <?php
-
-// Instruction qui permet de récupérer les données dans la base de donnée wf3_blog
-
-
-require_once '../Dao/PlayerDao.php';
+require '../Dao/PlayerDao.php';
+require '../Dao/GameDao.php';
+require '../Dao/ContestDao.php';
 
 try {
     $dao = new PlayerDao();
@@ -13,15 +11,22 @@ try {
 }
 
 // Afficher les données récupérées
-require "../view/home.html.php";
+//require "../view/home.html.php";
 
-
-require_once '../Dao/GameDao.php';
 
 try {
-    $dao = new GameDao();
-    $results = $dao->getAll();
+    $dao1 = new GameDao();
+    $results1 = $dao1->getAll();
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
+
+try {
+    $dao2 = new ContestDao();
+    $results2 = $dao2->getAll();
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+
 require "../view/home.html.php";

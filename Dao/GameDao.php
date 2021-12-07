@@ -1,7 +1,6 @@
 <?php
 
-$sql = ("INSERT INTO `game`(`id_game`, `title`, `min_players`, `max_players`) VALUES (NULL,:title,:min_players,:max_players)");
-        echo $sql;
+
 
 class GameDao
 {

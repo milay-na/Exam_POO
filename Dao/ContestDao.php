@@ -27,7 +27,7 @@ class contestDao
         $sth = $this->dbh->prepare("SELECT * FROM contest");
         $sth->execute();
         $results = $sth->fetchAll(PDO::FETCH_ASSOC);
-        require_once '../Model/contest.php';
+        require_once '../Model/Contest.php';
 
         foreach ($results as $key => $contest) {
             $results[$key] = (new contest())
