@@ -19,12 +19,12 @@ if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST') {
 
     if (empty($error_messages)) {
         require_once '../Model/Contest.php';
-        $game = (new game())->setStart_date($start_date)->setIdwinner($id_winner)->setIdgame($id_game);
+        $contest = (new Contest())->setStartDate($start_date)->setIdwinner($id_winner)->setIdgame($id_game);
 
         try {
             require_once '../Dao/ContestDao.php';
-            $dao = new GameDao();
-            $id = $dao->addGame($game);
+            $dao = new ContestDao();
+            $id = $dao->addcontest($contest);
             header(sprintf('Location: contest_show_controller.php?id=%d', $id));
         } catch (PDOException $e) {
             echo $e->getMessage();
